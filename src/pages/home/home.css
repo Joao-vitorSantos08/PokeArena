@@ -1,0 +1,44 @@
+main {
+  background-color: #12161a;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 40px;
+}
+
+a {
+  text-decoration: none;
+}
+
+article {
+  background-color: #1a2026;
+  height: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 20px;
+  border: solid 1px #232a31;
+  transition: all 0.5s;
+}
+
+article:hover {
+  border-color: #3b82f6;
+}
+
+article p {
+  color: #94a3b8;
+  border-bottom: solid 1px #2d3741;
+  font-size: 18px;
+}
+
+article p:first-of-type {
+  color: #fff;
+  border: none;
+}
+
+strong {
+  color: #f8fafc;
+}
