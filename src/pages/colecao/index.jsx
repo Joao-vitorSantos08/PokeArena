@@ -18,7 +18,10 @@ const Colecao = () => {
 
     const remover = (pokemon) => {
        const lista =  colecao.filter((item) => item.id != pokemon.id)
-       setColecao(lista)
+       
+        setColecao(lista)
+        localStorage.setItem("@pokemon", JSON.stringify(lista))
+
     }
 
     return (
