@@ -34,7 +34,7 @@ const Detalhes = () => {
         const lista = localStorage.getItem("@pokemon")
         const novalista = JSON.parse(lista) || []
 
-        const verificar = novalista.some((item) => item.id === pokemon.id)
+        const verificar = novalista.some((item) => item.name === pokemon.name || item.id === pokemon.id)
 
         if(verificar){
             alert("Esse pokemon Já foi salvo")
