@@ -6,7 +6,7 @@ const Header = () => {
         <header>
             <ul>
                 <Link to={"/"} className="logo">PokaArena</Link>
-                <Link>Sala de Batalha</Link>
+                <Link to={"/batalha"}>Sala de Batalha</Link>
                 <Link to={"/colecao"} className="colecao">Minha Coleção</Link>
             </ul>
         </header>
