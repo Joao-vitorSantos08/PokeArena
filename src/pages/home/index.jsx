@@ -34,8 +34,8 @@ const Home = () => {
     return (
         <main>
             {pokemons.map((pokemon) => (
-                <Link key={pokemon.id}>
-                    <article key={pokemon.id}>
+                <Link key={pokemon.id} to={`/detalhes/${pokemon.id}`}>
+                    <article>
                         <img src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default || pokemon.sprites.front_default} title={pokemon.name} />
                         <p>Nome: {pokemon.name}</p>
                         <p>Experiência: <strong>{pokemon.base_experience}</strong></p>
