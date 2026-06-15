@@ -7,6 +7,8 @@ const Home = () => {
 
     const [pokemons, setPokemons] = useState([])
 
+    const [loading, setLoading] = useState(true)
+
 
     useEffect(() => {
         const data = async () => {
@@ -25,11 +27,17 @@ const Home = () => {
 
             setPokemons(pokemonsDetalhes)
             console.log(pokemonsDetalhes)
-
+            setLoading(false)
         }
 
         data()
     }, [])
+
+
+    if (loading || !pokemons) {
+        return <p className="loading">Carregando dados do Pokémon...</p>;
+    }
+
 
     return (
         <main>

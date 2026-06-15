@@ -4,6 +4,10 @@ header {
     padding: 40px;
 }
 
+.nav_mobile{
+    display: none;
+}
+
 header ul {
     display: flex;
     align-items: center;
@@ -34,4 +38,31 @@ ul a {
 
 .colecao:hover{
     background-color:  #bc0101;
+}
+
+
+
+@media(max-width: 576px) {
+   .nav_header{
+    display: none;
+   }
+
+   .nav_mobile{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+   }
+ 
+   .link{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: transparent;
+    text-align: center;
+   }
+   .batalha{
+    padding: 5px;
+    border-bottom: solid 1px #fff ;
+   }
+
 }

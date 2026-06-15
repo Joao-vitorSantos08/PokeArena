@@ -12,7 +12,7 @@ const Batalha = () => {
     useEffect(() => {
         const dados = async () => {
 
-            let url = `https://pokeapi.co/api/v2/pokemon?limit=20`
+            let url = `https://pokeapi.co/api/v2/pokemon?limit=50`
             const resposta = await fetch(url)
             const dados = await resposta.json()
 
@@ -23,9 +23,9 @@ const Batalha = () => {
 
             const resultados = await Promise.all(results)
 
-            setTimeAzul(resultados)
+            setTimeAzul(resultados.slice(0,25))
             console.log(resultados)
-            setTimeVermelho(resultados)
+            setTimeVermelho(resultados.slice(25,50))
         }
 
         dados()
@@ -33,7 +33,7 @@ const Batalha = () => {
     }, [])
 
     const batalhar = () => {
-        if(pokemonAzulSelecionado === null || pokemonVermelhoSelecionado === null){
+        if (pokemonAzulSelecionado === null || pokemonVermelhoSelecionado === null) {
             alert("selecione os pokemon para batalhar")
         }
 
@@ -68,21 +68,27 @@ const Batalha = () => {
             <main className="campo_de_batalha">
 
                 <div className="arena-combate">
-                    {pokemonAzulSelecionado && (
-                        <div className="card card-azul">
-                            <img src={pokemonAzulSelecionado.sprites.front_default} alt="" />
-                            <h2>{pokemonAzulSelecionado.name}</h2>
-                        </div>
-                    )}
+                    <div>
+                        <p>{pokemonAzulSelecionado === null ? " Selecione um pokemon " : ""}</p>
+                        {pokemonAzulSelecionado && (
+                            <div className="card card-azul">
+                                <img src={pokemonAzulSelecionado.sprites.front_default} alt="" />
+                                <h2>{pokemonAzulSelecionado.name}</h2>
+                            </div>
+                        )}
+                    </div>
 
                     <h1>VS</h1>
 
-                    {pokemonVermelhoSelecionado && (
-                        <div className="card card-vermelho">
-                            <img src={pokemonVermelhoSelecionado.sprites.front_default} alt="" />
-                            <h2>{pokemonVermelhoSelecionado.name}</h2>
-                        </div>
-                    )}
+                    <div>
+                        <p>{pokemonVermelhoSelecionado === null ? " Selecione um pokemon " : ""}</p>
+                        {pokemonVermelhoSelecionado && (
+                            <div className="card card-vermelho">
+                                <img src={pokemonVermelhoSelecionado.sprites.front_default} alt="" />
+                                <h2>{pokemonVermelhoSelecionado.name}</h2>
+                            </div>
+                        )}
+                    </div>
                 </div>
 
                 <button onClick={batalhar}>batalhar</button>
@@ -90,6 +96,7 @@ const Batalha = () => {
             </main>
 
             <div className="timeVermelho">
+
                 {timeVermelho.map((pokemon) => (
                     <article key={pokemon.id} onClick={() => setPokemonVermelhoSelecionado(pokemon)}>
                         <img src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default || pokemon.sprites.front_default} alt="" />

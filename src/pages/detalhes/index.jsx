@@ -79,7 +79,7 @@ const Detalhes = () => {
                 </div>
 
                 <ul className="golpes">
-                    Lista de golpes: {pokemon.moves.slice(0, 50).map((golpes, index) =>
+                    Lista de golpes: {pokemon.moves.slice(0, 30).map((golpes, index) =>
                     (
                         <li key={index}>{golpes.move.name}</li>
                     ))}
