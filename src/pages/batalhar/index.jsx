@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import "./batalhar.css"
+import Swal from "sweetalert2"
 
 const Batalha = () => {
 
@@ -23,9 +24,9 @@ const Batalha = () => {
 
             const resultados = await Promise.all(results)
 
-            setTimeAzul(resultados.slice(0,25))
+            setTimeAzul(resultados.slice(0, 50))
             console.log(resultados)
-            setTimeVermelho(resultados.slice(25,50))
+            setTimeVermelho(resultados.slice(25, 50))
         }
 
         dados()
@@ -34,7 +35,14 @@ const Batalha = () => {
 
     const batalhar = () => {
         if (pokemonAzulSelecionado === null || pokemonVermelhoSelecionado === null) {
-            alert("selecione os pokemon para batalhar")
+
+            Swal.fire({
+                title: "Atenção",
+                text: "Selecione os dois Pokémon para batalhar.",
+                icon: "warning"
+            })
+
+            return
         }
 
         if (pokemonAzulSelecionado.
@@ -42,14 +50,30 @@ const Batalha = () => {
             > pokemonVermelhoSelecionado.
                 base_experience
         ) {
-            alert(`${pokemonAzulSelecionado.name} ganhou`)
-        } else if (pokemonAzulSelecionado.
-            base_experience
-            === pokemonVermelhoSelecionado.
-                base_experience) {
-            alert("Empate")
+            Swal.fire({
+                title: `🏆 ${pokemonAzulSelecionado.name} venceu!`,
+                imageUrl: `${pokemonAzulSelecionado.sprites.front_default}`,
+                imageAlt: pokemonAzulSelecionado.name,
+                text: `Experiência: ${pokemonAzulSelecionado.base_experience}`,
+                confirmButtonText: "Continuar"
+            })
+
+        } else if (pokemonAzulSelecionado.base_experience === pokemonVermelhoSelecionado.base_experience) {
+            Swal.fire({
+                title: "🤝 Empate",
+                text: "Os dois Pokémon possuem a mesma experiência.",
+                icon: "info"
+            })
+
         } else {
-            alert(`${pokemonVermelhoSelecionado.name} ganhou`)
+            Swal.fire({
+                title: `🏆 ${pokemonVermelhoSelecionado.name} venceu!`,
+                imageUrl: `${pokemonVermelhoSelecionado.sprites.front_default}`,
+                imageAlt: pokemonVermelhoSelecionado.name,
+                text: `Experiência: ${pokemonVermelhoSelecionado.base_experience}`,
+                confirmButtonText: "Continuar"
+            })
+
         }
 
     }

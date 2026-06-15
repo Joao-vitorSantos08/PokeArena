@@ -35,7 +35,7 @@ const Home = () => {
 
 
     if (loading || !pokemons) {
-        return <p className="loading">Carregando dados do Pokémon...</p>;
+        return <p className="loading">Carregando...</p>;
     }
 
 

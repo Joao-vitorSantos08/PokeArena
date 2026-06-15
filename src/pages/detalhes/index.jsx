@@ -1,6 +1,7 @@
 import { useState, useEffect, } from "react"
 import { useParams } from "react-router-dom"
 import "./detalhs.css"
+import Swal from "sweetalert2"
 
 const Detalhes = () => {
 
@@ -29,22 +30,29 @@ const Detalhes = () => {
     if (loading || !pokemon) {
         return <p className="loading">Carregando dados do Pokémon...</p>;
     }
-    
+
     const salvar = () => {
         const lista = localStorage.getItem("@pokemon")
         const novalista = JSON.parse(lista) || []
 
         const verificar = novalista.some((item) => item.name === pokemon.name || item.id === pokemon.id)
 
-        if(verificar){
-            alert("Esse pokemon Já foi salvo")
+        if (verificar) {
+            Swal.fire({
+                title: "Pokémon já salvo",
+                text: `${pokemon.name} já está na sua coleção.`,
+                icon: "info"
+            })
             return
         }
 
         novalista.push(pokemon)
         localStorage.setItem("@pokemon", JSON.stringify(novalista))
-        alert("Pokemon salvo")
-        
+        Swal.fire({
+            title: "Pokémon salvo!",
+            text: `${pokemon.name} foi adicionado à sua coleção.`,
+            icon: "success"
+        })
     }
 
     return (
