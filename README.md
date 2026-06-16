@@ -37,7 +37,7 @@ O sistema permite que o usuário pesquise Pokémon pelo nome, visualize detalhes
 
 Você pode visualizar o projeto diretamente no navegador sem precisar baixar:
 
-➡️ [Clique aqui para acessar](poke-arena-lovat.vercel.app) 
+➡️ [Clique aqui para acessar](https://poke-arena-lovat.vercel.app/) 
 
 ## Tecnologias
 
