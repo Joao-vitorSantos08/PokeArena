@@ -12,16 +12,21 @@ const Colecao = () => {
 
             setColecao(JSON.parse(minhaColecao) || [])
             console.log(JSON.parse(minhaColecao) || [])
+
         }
         dados()
     }, [])
 
     const remover = (pokemon) => {
-       const lista =  colecao.filter((item) => item.id != pokemon.id)
-       
+        const lista = colecao.filter((item) => item.id != pokemon.id)
+
         setColecao(lista)
         localStorage.setItem("@pokemon", JSON.stringify(lista))
 
+    }
+
+    if (colecao === null) {
+        return <p className="listaVazia">Sua lista está vazia</p>
     }
 
     return (
@@ -36,6 +41,7 @@ const Colecao = () => {
                     </div>
                 </article>
             ))}
+            <p className="listaVazia">{colecao.length === 0 ? "Sua coleção está deserta. Que tal lançar sua primeira Pokébola" : ""}</p>
         </main>
     )
 }

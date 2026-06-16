@@ -13,7 +13,7 @@ const Batalha = () => {
     useEffect(() => {
         const dados = async () => {
 
-            let url = `https://pokeapi.co/api/v2/pokemon?limit=50`
+            let url = `https://pokeapi.co/api/v2/pokemon?limit=60`
             const resposta = await fetch(url)
             const dados = await resposta.json()
 
@@ -24,9 +24,9 @@ const Batalha = () => {
 
             const resultados = await Promise.all(results)
 
-            setTimeAzul(resultados.slice(0, 50))
+            setTimeAzul(resultados.slice(0, 30))
             console.log(resultados)
-            setTimeVermelho(resultados.slice(25, 50))
+            setTimeVermelho(resultados.slice(30, 60))
         }
 
         dados()

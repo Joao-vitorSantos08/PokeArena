@@ -1,3 +1,21 @@
+.section-home {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.section-home input {
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  padding: 5px 0px;
+  color: #fff;
+  margin-top: 20px;
+  border: solid 1px white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 15px;
+}
+
 main {
   background-color: #12161a;
   display: grid;
@@ -12,6 +30,7 @@ a {
 
 article {
   background-color: #1a2026;
+  width: 240px;
   height: 300px;
   padding: 20px;
   display: flex;
@@ -42,3 +61,14 @@ article p:first-of-type {
 strong {
   color: #f8fafc;
 }
+
+
+@media (max-width: 599px) {
+
+  .section-home input{
+    width: 300px;
+  }
+  
+    }
+
+    

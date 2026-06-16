@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
 import "./home.css"
 import { Link } from "react-router-dom"
-
 const Home = () => {
 
 
     const [pokemons, setPokemons] = useState([])
 
     const [loading, setLoading] = useState(true)
+
+    const [buscar, setBuscar] = useState("")
 
 
     useEffect(() => {
@@ -34,26 +35,31 @@ const Home = () => {
     }, [])
 
 
-    if (loading || !pokemons) {
-        return <p className="loading">Carregando...</p>;
-    }
-
+    const FiltrarPokemon = pokemons.filter((pokemon) =>
+        pokemon.name.toLowerCase()
+            .includes(buscar.toLowerCase())
+    )
 
     return (
-        <main>
-            {pokemons.map((pokemon) => (
-                <Link key={pokemon.id} to={`/detalhes/${pokemon.id}`}>
-                    <article>
-                        <img src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default || pokemon.sprites.front_default} title={pokemon.name} />
-                        <p>Nome: {pokemon.name}</p>
-                        <p>Experiência: <strong>{pokemon.base_experience}</strong></p>
-                        <p>vida: <strong>{pokemon.stats[0].base_stat}</strong></p>
-                        <p>Ataque: <strong>{pokemon.stats[1].base_stat}</strong></p>
-                        <p>Defesa: <strong>{pokemon.stats[2].base_stat}</strong></p>
-                    </article>
-                </Link>
-            ))}
-        </main>
+        <section className="section-home">
+            <input placeholder="Pesquisar Pokemon" type="text" value={buscar} onChange={(e) => setBuscar(e.target.value)} />
+            <main>
+
+                {FiltrarPokemon.map((pokemon) => (
+                    <Link key={pokemon.id} to={`/detalhes/${pokemon.id}`}>
+                        <article>
+                            <img src={pokemon.sprites.versions['generation-v']['black-white'].animated.front_default || pokemon.sprites.front_default} title={pokemon.name} />
+                            <p>Nome: {pokemon.name}</p>
+                            <p>Experiência: <strong>{pokemon.base_experience}</strong></p>
+                            <p>vida: <strong>{pokemon.stats[0].base_stat}</strong></p>
+                            <p>Ataque: <strong>{pokemon.stats[1].base_stat}</strong></p>
+                            <p>Defesa: <strong>{pokemon.stats[2].base_stat}</strong></p>
+                        </article>
+                    </Link>
+                ))}
+            </main>
+            <p className="loading">{loading === true ? "Carregando..." : ""}</p>
+        </section>
     )
 }
 

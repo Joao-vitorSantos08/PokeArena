@@ -8,6 +8,14 @@
     min-height: 100vh;
 }
 
+.listaVazia{
+    text-align: center;
+    font-size: 32px;
+    margin-top: 100px;
+    color: #fff;
+    font-weight: bold;
+}
+
 .main_colecao .card {
     background-color: #1e293b;
     width: 100%;
