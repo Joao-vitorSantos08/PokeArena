@@ -169,9 +169,9 @@
     .timeAzul,
     .timeVermelho {
         grid-template-columns: repeat(1, 1fr);
-        height: 830px;
-        overflow: hidden;
+        height: 480px;
+        overflow: scroll;
     }
 
-    
+
 }

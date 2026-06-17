@@ -26,7 +26,7 @@ const Batalha = () => {
 
             setTimeAzul(resultados.slice(0, 30))
             console.log(resultados)
-            setTimeVermelho(resultados.slice(30, 60))
+            setTimeVermelho(resultados.slice(30,60))
         }
 
         dados()
