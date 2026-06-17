@@ -32,6 +32,7 @@ article {
   background-color: #1a2026;
   width: 240px;
   height: 300px;
+  margin:  0 auto;
   padding: 20px;
   display: flex;
   flex-direction: column;
